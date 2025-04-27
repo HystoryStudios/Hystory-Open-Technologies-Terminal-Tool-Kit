@@ -8,16 +8,45 @@ namespace HOTTUI.H.O.T.T.U.I
 {
     public class Window
     {
-        public static void SetWindow(string? WindowName, ConsoleColor color)
+        public int Height { get; set; }
+        public int Width { get; set; }
+
+        public char[,] chars;
+        public char Background { get; set; }
+        public Window(int height, int width, char backgrond)
+        { 
+            Height = height;
+            Width = width;
+            chars = new char[height, width];
+            Background = backgrond;
+            CreateTileMap();
+        }
+        private void CreateTileMap()
         {
-            int ConsoleSizeWidth = Console.WindowWidth;
-            int ConsoleSizeHeight = Console.WindowHeight;
-            char jsp = '-';
-            Console.Clear();
-            Console.Title = WindowName;
-            Tools.Horizontal_Line(ConsoleSizeWidth, color, jsp);
-            Tools.Color_Write(color, WindowName + "\n");
-            Tools.Horizontal_Line(ConsoleSizeWidth, color, jsp);
+            // Remplir
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    chars[x, y] = Background;
+                }
+                
+            }
+        }
+        public void Change(int x, int y, char item)
+        {
+            chars[x, y] = item;
+        }
+        public void PrintUnicolor(ConsoleColor color)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    Tools.Color_Write(color, chars[x, y].ToString()); 
+                }
+                Console.Write("\n");
+            }
         }
     }
 }

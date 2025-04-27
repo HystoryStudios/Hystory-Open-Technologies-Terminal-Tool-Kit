@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
@@ -51,19 +52,60 @@ namespace HOTTUI.H.O.T.T.U.I
                 Color_Write_Back(color, color, " ");
             }
         }
-        public static int Menu(string Menu_Name, int choise, List<string> ellement)
+        public static int Menu(ConsoleColor color, Dictionary<int, string> choise, string cursor)
         {
-            for (int i = 1; i < ellement.Count(); i++)
+            int position = 1;
+            bool jsp = true;
+            Console.WriteLine(cursor);
+            foreach (var s in choise)
             {
-                string jsp = ellement.ElementAt(i);
-                Console.WriteLine($"{i} : {jsp}");
+                Console.WriteLine($"{s.Key}. {s.Value}");
             }
-            choise = int.Parse(Console.ReadLine());
-            return choise;
+            while (jsp)
+            {
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.UpArrow:
+                        position -= 1;
+                        break;
+                    case ConsoleKey.DownArrow:
+                        position += 1;
+                        break;
+                    case ConsoleKey.Enter:
+                        Console.Clear();
+                        jsp = false;
+                        break;
+                }
+                Console.Clear();
+                if (position >= choise.Count + 1)
+                {
+                    position = 1;
+                } 
+                else if (position <= 1)
+                {
+                    position = 1;
+                }
+                foreach (var s in choise)
+                {
+                    if (s.Key == position)
+                    {
+                        Console.WriteLine($"{s.Key}. {s.Value}  {cursor}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{s.Key}. {s.Value}");
+                    }
+                }
+                
+            }
+            Console.Clear();
+            Console.ResetColor();
+            return position;
+
         }
         public static void Print_List_Int(List<int> ellementInt)
         {
-            for (int i = 1; i < ellementInt.Count(); i++)
+            for (int i = 0; i < ellementInt.Count(); i++)
             {
                 int ell = ellementInt.ElementAt(i);
                 Console.WriteLine(ell);
@@ -71,7 +113,7 @@ namespace HOTTUI.H.O.T.T.U.I
         }
         public static void Print_List_String(List<string> ellementString)
         {
-            for (int i = 1; i < ellementString.Count(); i++)
+            for (int i = 0; i < ellementString.Count(); i++)
             {
                 string ell = ellementString.ElementAt(i);
                 Console.WriteLine(ell);
@@ -98,6 +140,42 @@ namespace HOTTUI.H.O.T.T.U.I
                 Console.Write(character.ToString());
                 Thread.Sleep(speed);
             }
+        }
+        public static float Cursor(ConsoleColor color, float size, int Length, float power, string type)
+        {
+            float value = size / 2;
+
+            int jsp = Length / (int) size;
+
+            while (Console.ReadKey().Key != ConsoleKey.Enter)
+            {
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        value += power;
+                        break; 
+                    case ConsoleKey.LeftArrow:
+                        value -= power;
+                        break;
+                }
+                Console.Clear();
+
+                Color_Write(color, "[");
+
+                for (int i = 0; i < (value / Length); i++)
+                {
+                    Console.Write("=");
+                }
+                
+                for (int i =0; i < (Length/ value); i++)
+                {
+                    Console.Write("-");
+                }
+                Color_Write(color, "]");
+                Console.Write($" {value}");
+            }
+
+            return value;
         }
     }
 }
