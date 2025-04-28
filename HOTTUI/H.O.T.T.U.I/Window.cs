@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HOTTUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,16 @@ namespace HOTTUI.H.O.T.T.U.I
             Width = width;
             chars = new char[height, width];
             Background = backgrond;
-            CreateTileMap();
+            CreateBackGround();
         }
-        private void CreateTileMap()
+        public void CreateBackGround()
         {
-            // Remplir
             for (int y = 0; y < Height; y++)
             {
                 for (int x = 0; x < Width; x++)
                 {
                     chars[x, y] = Background;
                 }
-                
             }
         }
         public void Change(int x, int y, char item)
@@ -43,7 +42,7 @@ namespace HOTTUI.H.O.T.T.U.I
             {
                 for (int x = 0; x < Width; x++)
                 {
-                    Tools.Color_Write(color, chars[x, y].ToString()); 
+                    Menu.Tools.Color_Write(color, chars[x, y].ToString()); 
                 }
                 Console.Write("\n");
             }

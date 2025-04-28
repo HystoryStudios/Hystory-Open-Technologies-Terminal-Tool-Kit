@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace HOTTUI.H.O.T.T.U.I
+namespace HOTTUI.Menu
 {
     public class Tools
     {
@@ -63,7 +63,7 @@ namespace HOTTUI.H.O.T.T.U.I
             }
             while (jsp)
             {
-                switch (Console.ReadKey().Key)
+                switch (Console.ReadKey().Key)  
                 {
                     case ConsoleKey.UpArrow:
                         position -= 1;
