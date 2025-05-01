@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HOTTUI.H.O.T.T.U.I
+namespace HOTTUI
 {
     public class Window
     {

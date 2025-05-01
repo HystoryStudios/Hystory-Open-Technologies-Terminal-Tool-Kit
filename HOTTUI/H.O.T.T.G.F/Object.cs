@@ -1,4 +1,5 @@
 ﻿using HOTTGF;
+using HOTTUI.Menu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,11 +13,24 @@ namespace HOTTGF
     public class Object
     {
         public char Texture {  get; set; }
-        public Vector2 Position { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
         public Object(char texture, Vector2 position)
         {
             Texture = texture;
-            Position = position;
+            X = (int) position.X;
+            Y = (int) position.Y;
+        }
+
+        public void Draw(ConsoleColor color)
+        {
+            Console.Clear();
+            Console.SetCursorPosition(X, Y);
+            Tools.Color_Write(color, Texture.ToString());
+
+            // clear 
+
+            
         }
     }
 }
