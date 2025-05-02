@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace HOTTGF
 {
-    public class Object
+    public class GameObject
     {
         public char Texture {  get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public Object(char texture, Vector2 position)
+        public GameObject(char texture, Vector2 position)
         {
             Texture = texture;
             X = (int) position.X;
@@ -24,13 +24,13 @@ namespace HOTTGF
 
         public void Draw(ConsoleColor color)
         {
-            Console.Clear();
             Console.SetCursorPosition(X, Y);
             Tools.Color_Write(color, Texture.ToString());
 
             // clear 
 
-            
+
+
         }
     }
 }
