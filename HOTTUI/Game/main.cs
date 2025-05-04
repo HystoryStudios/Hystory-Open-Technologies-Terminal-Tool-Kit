@@ -40,8 +40,10 @@ internal class Test
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
             };
         Player player = new Player(2, 2);
+        Console.Clear();
         while (true)
         {
+            
             List<char> list = new List<char>();
             list.Add('#');
 
