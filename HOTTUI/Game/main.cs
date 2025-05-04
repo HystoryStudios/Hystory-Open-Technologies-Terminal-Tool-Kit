@@ -9,6 +9,7 @@ internal class Test
     {
         TileMap tileMap = new TileMap(100, 100, ';');
         Teleporteur teleporteur = new Teleporteur(new System.Numerics.Vector2(16, 15), new System.Numerics.Vector2(19, 15));
+        Lever lever = new Lever(new System.Numerics.Vector2(20, 15));
         char[,] map = new char[,]
             {
                 {'#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#', },
@@ -51,17 +52,12 @@ internal class Test
             teleporteur.Draw(ConsoleColor.Green);
 
             teleporteur.Teleport(player);
-            
+            lever.Draw(ConsoleColor.Yellow);
 
             player.Draw(ConsoleColor.Blue);
 
-            if (map[player.Y, player.X] == '!')
+            if (lever.IsPressed(player))
             {
-                player.X += 3;
-            }
-            else if (map[player.Y, player.X] == '/')
-            { 
-                map[15, 20] = '|';
                 map[17, 20] = '.';
                 map[18, 15] = '.';
             }
@@ -79,7 +75,7 @@ internal class Test
                     Console.Write(map[y, x]);
                 }
             }
-
+            lever.Draw(ConsoleColor.Yellow);
             teleporteur.Draw(ConsoleColor.Green);
             
             player.Draw(ConsoleColor.Blue);
