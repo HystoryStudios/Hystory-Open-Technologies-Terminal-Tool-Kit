@@ -26,7 +26,6 @@ namespace HOTTGF
         {
             Console.SetCursorPosition(X, Y);
             Tools.Color_Write(color, Texture.ToString());
-
         }
     }
 }

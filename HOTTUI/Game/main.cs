@@ -1,14 +1,14 @@
 ﻿using HOTTGF;
 using Game;
-using HOTTUI.H.O.T.T.U.I;
-using System.Security.Cryptography;
 using HOTTUI.Menu;
+using HOTTUI.Game;
 
 internal class Test
 {
     public static void Main(string[] args)
     {
         TileMap tileMap = new TileMap(100, 100, ';');
+        Teleporteur teleporteur = new Teleporteur(new System.Numerics.Vector2(16, 15), new System.Numerics.Vector2(19, 15));
         char[,] map = new char[,]
             {
                 {'#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#','#', '#', '#', },
@@ -26,7 +26,7 @@ internal class Test
                 {'#', '.', '.', '.', '.', '.', '.', '.', '.','.', '.', '.', '.', '.', '.', '.', '.', '#','#', '.', '.', '.', '.', '.', '.', '.', '#' },
                 {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '.', '#', '#', '#'},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '#', '.', '#','#', '.', '.', '.', '#', '.', '.', '.', '#' },
-                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '#', '!', '#','#', '.', '/', '.', '#', '.', '.', '.', '#'},
+                {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '#', '.', '#','#', '.', '/', '.', '#', '.', '.', '.', '#'},
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', ' ', ' ', ' ', '#', '.', '#','#', '.', '.', '.', '#', '.', '.', '.', '#' },
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', '#', '#', '#', '#', '.', '#','#', '#', '#', '#', '#', '.', '.', '.', '#' },
                 {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',' ', ' ', ' ', '#', '@', '.', '#', '.', '.','.', '.', '.', '.', '.', '.', '.', '.', '#' },
@@ -48,7 +48,9 @@ internal class Test
             list.Add('#');
 
 
+            teleporteur.Draw(ConsoleColor.Green);
 
+            teleporteur.Teleport(player);
             
 
             player.Draw(ConsoleColor.Blue);
@@ -78,7 +80,7 @@ internal class Test
                 }
             }
 
-            
+            teleporteur.Draw(ConsoleColor.Green);
             
             player.Draw(ConsoleColor.Blue);
             player.Update(map, list);
