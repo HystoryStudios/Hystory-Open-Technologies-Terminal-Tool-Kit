@@ -1,20 +1,26 @@
 ﻿using HOTTUI;
+using HOTTUI.Menu;
 
 namespace HOTTGF
 {
     public class TileMap
     {
         public char[,] chars;
-        public Window Window { get; set; }
-        public TileMap(int SizeX, int SizeY, char Background) 
+        public Window window { get; set; }
+        public TileMap(char[,] tilemap) 
         {
-            Window = new Window(SizeY, SizeX, Background);
-            Window.CreateBackGround();
+            chars = tilemap;
         }
-
         public void DrawUniColor(ConsoleColor color)
         {
-            Window.PrintUnicolor(color);
+            for (int y = 0; y < chars.GetLength(0); y++)
+            {
+                for (int x = 0; x < chars.GetLength(1); x++)
+                {
+                    Console.SetCursorPosition(x, y);
+                    Tools.Color_Write(color, chars[y, x].ToString());
+                }
+            }
         }
     }
 }

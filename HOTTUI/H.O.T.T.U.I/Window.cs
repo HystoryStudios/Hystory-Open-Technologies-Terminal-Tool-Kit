@@ -20,7 +20,6 @@ namespace HOTTUI
             Width = width;
             chars = new char[height, width];
             Background = backgrond;
-            CreateBackGround();
         }
         public void CreateBackGround()
         {
@@ -38,13 +37,13 @@ namespace HOTTUI
         }
         public void PrintUnicolor(ConsoleColor color)
         {
-            for (int y = 0; y < Height; y++)
+            for (int y = 0; y < chars.GetLength(0); y++)
             {
-                for (int x = 0; x < Width; x++)
+                for (int x = 0; x < chars.GetLength(1); x++)
                 {
+                    Console.SetCursorPosition(y, x);
                     Menu.Tools.Color_Write(color, chars[x, y].ToString()); 
                 }
-                Console.Write("\n");
             }
         }
     }
