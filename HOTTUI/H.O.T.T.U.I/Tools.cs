@@ -8,32 +8,49 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace HOTTUI.Menu
+namespace HOTTUI
 {
     public class Tools
     {
-        public static void Color_Write(ConsoleColor Color, string Text)
+        public class Whrite
         {
-            Console.ForegroundColor = Color;
-            Console.Write(Text);
-            Console.ResetColor();
-        }
-        public static void Color_Write_Back(ConsoleColor Color, ConsoleColor BackGround, string Text)
-        {
-            Console.BackgroundColor = BackGround;
-            Console.ForegroundColor = Color;
-            Console.Write(Text);
-            Console.ResetColor();
-        }
-        public static void Button(string Button_Name)
-        {
-            var cursor = Console.GetCursorPosition;
+            public static void Color_Write(ConsoleColor Color, string Text)
+            {
+                Console.ForegroundColor = Color;
+                Console.Write(Text);
+                Console.ResetColor();
+            }
+            public static void Color_Write_Back(ConsoleColor Color, ConsoleColor BackGround, string Text)
+            {
+                Console.BackgroundColor = BackGround;
+                Console.ForegroundColor = Color;
+                Console.Write(Text);
+                Console.ResetColor();
+            }
+            public static void RainbowString(string text)
+            {
+                Random rd = new Random();
+
+                foreach (var character in text)
+                {
+                    var consoleColors = (ConsoleColor)rd.Next(0, 16);
+                    Color_Write(consoleColors, character.ToString());
+                }
+            }
+            public static void WriteMachine(string text, int speed)
+            {
+                foreach (var character in text)
+                {
+                    Console.Write(character.ToString());
+                    Thread.Sleep(speed);
+                }
+            }
         }
         public static void Horizontal_Line(int size, ConsoleColor color, char type)
         {
             for (int i = 0; i < size; i++)
             {
-                Color_Write(color, type.ToString());
+                Whrite.Color_Write(color, type.ToString());
             }
         }
         public static void Vertical_Line(int size, ConsoleColor color)
@@ -41,7 +58,7 @@ namespace HOTTUI.Menu
             //This Fonction is for create a vertical line in the left of the terminal
             for (int i = 0; i < size; i++)
             {
-                Color_Write(color, "|\n");
+                Whrite.Color_Write(color, "|\n");
             }
         }
         public static void Loading_Bar(int size, ConsoleColor color, int DelayTime)
@@ -49,7 +66,7 @@ namespace HOTTUI.Menu
             for (int i = 0; i < size; i++)
             {
                 Thread.Sleep(DelayTime);
-                Color_Write_Back(color, color, " ");
+                Whrite.Color_Write_Back(color, color, " ");
             }
         }
         public static int Menu(ConsoleColor color, Dictionary<int, string> choise, string cursor)
@@ -111,7 +128,7 @@ namespace HOTTUI.Menu
                 Console.WriteLine(ell);
             }
         }
-        public static void Print_List_String(List<string> ellementString)
+        public static void Print_List_String(List<Object?> ellementString)
         {
             for (int i = 0; i < ellementString.Count(); i++)
             {
@@ -121,26 +138,10 @@ namespace HOTTUI.Menu
         }
         public static void PixelArt(ConsoleColor color, string symbol)
         {
-            Color_Write(color, symbol);
+            Whrite.Color_Write(color, symbol);
         }
-        public static void RainbowString(string text)
-        {
-            Random rd = new Random();
-
-            foreach (var character in text)
-            {
-                var consoleColors = (ConsoleColor)rd.Next(0, 16);
-                Color_Write(consoleColors, character.ToString());
-            }
-        }
-        public static void WriteMachine(string text, int speed)
-        {
-            foreach (var character in text)
-            {
-                Console.Write(character.ToString());
-                Thread.Sleep(speed);
-            }
-        }
+        
+        
         public static float Cursor(ConsoleColor color, float size, int Length, float power, string type)
         {
             float value = size / 2;
@@ -160,7 +161,7 @@ namespace HOTTUI.Menu
                 }
                 Console.Clear();
 
-                Color_Write(color, "[");
+                Whrite.Color_Write(color, "[");
 
                 for (int i = 0; i < (value / Length); i++)
                 {
@@ -171,7 +172,7 @@ namespace HOTTUI.Menu
                 {
                     Console.Write("-");
                 }
-                Color_Write(color, "]");
+                Whrite.Color_Write(color, "]");
                 Console.Write($" {value}");
             }
 

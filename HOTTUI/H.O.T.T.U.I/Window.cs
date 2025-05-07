@@ -42,7 +42,7 @@ namespace HOTTUI
                 for (int x = 0; x < chars.GetLength(1); x++)
                 {
                     Console.SetCursorPosition(y, x);
-                    Menu.Tools.Color_Write(color, chars[x, y].ToString()); 
+                    Tools.Whrite.Color_Write(color, chars[x, y].ToString()); 
                 }
             }
         }

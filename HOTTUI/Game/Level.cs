@@ -1,6 +1,6 @@
 ﻿using Game;
 using HOTTGF;
-using HOTTUI.Menu;
+using HOTTUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HOTTUI.Game
+namespace Game
 {
     public  class Level
     {
@@ -78,7 +78,7 @@ namespace HOTTUI.Game
                 player.Update(map, list);
 
             }
-            Tools.Color_Write(ConsoleColor.DarkGreen, "Congrats you have finish the level!");
+            Tools.Whrite.Color_Write(ConsoleColor.DarkGreen, "Congrats you have finish the level!");
         }
         public static void Level2()
         {
@@ -156,7 +156,7 @@ namespace HOTTUI.Game
                 }
 
             }
-            Tools.Color_Write(ConsoleColor.DarkGreen, "Congrats you have finish the level!");
+            Tools.Whrite.Color_Write(ConsoleColor.DarkGreen, "Congrats you have finish the level!");
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using HOTTGF;
-using HOTTUI.Menu;
+using HOTTUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,7 +25,7 @@ namespace HOTTGF
         public void Draw(ConsoleColor color)
         {
             Console.SetCursorPosition(X, Y);
-            Tools.Color_Write(color, Texture.ToString());
+            Tools.Whrite.Color_Write(color, Texture.ToString());
         }
     }
 }

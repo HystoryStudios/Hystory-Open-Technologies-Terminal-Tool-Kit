@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game;
 
-namespace HOTTUI.Game
+namespace Game
 {
     public class Lever : GameObject
     {
