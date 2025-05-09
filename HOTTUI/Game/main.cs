@@ -6,8 +6,7 @@ internal class Test
 {
     public static void Main(string[] args)
     {
-        Texture texture = new Texture("C:\\Users\\natsu\\source\\repos\\HOTTUI\\HOTTUI\\Game\\level2.txt");
-
-        texture.Print();
+        Level.Level1(); 
+        Level.Level2(); 
     }
 }

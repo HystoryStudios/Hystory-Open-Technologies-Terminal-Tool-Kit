@@ -158,5 +158,9 @@ namespace Game
             }
             Tools.Whrite.Color_Write(ConsoleColor.DarkGreen, "Congrats you have finish the level!");
         }
+        public static void Level3()
+        {
+
+        }
     }
 }

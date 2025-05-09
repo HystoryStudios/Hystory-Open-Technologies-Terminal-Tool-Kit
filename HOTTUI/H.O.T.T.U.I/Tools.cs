@@ -128,7 +128,7 @@ namespace HOTTUI
                 Console.WriteLine(ell);
             }
         }
-        public static void Print_List_String(List<Object?> ellementString)
+        public static void Print_List_String(List<string> ellementString)
         {
             for (int i = 0; i < ellementString.Count(); i++)
             {
